@@ -1,0 +1,70 @@
+id,logo_image_url,background_image_url,theme_color,custom_persona,chatbot_ending_msg,custom_prompt,is_progpt_branding_enabled,is_citation_show_enabled,citation_view_type,is_sharing_enabled,is_memorization_enabled,is_gpt_response_enabled,chatbot_dimension_data,project_id
+1,,,,,,,False,False,always-hide,True,False,False,[],1ff3381f-d524-4dac-8506-d72c291af715
+2,/CustomBot/media/logo/jatinjangra1282001@gmail.comdrag_and_drop_testing_logo_toto-removebg-preview.png,,#000000,Enter a query, Please contact to @habilebas.io for any query .,,,False,always-hide,False,,,[],1ff3381f-d524-4dac-8506-d72c291af715
+3,,,,,,,False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+4,,,,,,,False,False,always-hide,False,False,False,,4d2e83be-5537-45e3-b431-f55ee10d7b39
+5,,,,,,,False,False,always-hide,True,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+6,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+7,,,,,,,False,False,always-hide,False,False,False,,68241c11-f16e-4717-b8fa-05ae926ecfd8
+8,,,,,,give answer in 10 words ,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+9,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+10,,,,,generate answer in 10 words ,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+11,,,,,,,False,False,always-hide,False,False,False,,8e79cb88-1338-4f0a-b41d-2c1d44302706
+12,,,,,,,False,False,always-hide,False,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+13,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+14,,,,,,,False,False,always-hide,False,False,False,,8e79cb88-1338-4f0a-b41d-2c1d44302706
+15,,,,,,,False,,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+16,,,#003366,Send a Message,,,False,False,always-hide,False,False,False,,336f7f15-ee2b-4f39-b169-374bbc53d391
+17,,,,,,,False,False,always-hide,False,False,False,,336f7f15-ee2b-4f39-b169-374bbc53d391
+18,/srv/Custombot/static/logo/Minions_characters.png,,#32ACE2,Send a Message,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+19,,,,,,,False,False,always-hide,False,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+20,,,,,type here ,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+21,,,,,,,False,False,always-hide,True,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+22,,,,,,,False,,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+23,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+24,,,,,,,False,False,always-hide,False,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+25,,,,,,,False,False,always-hide,False,False,False,,ea69dac7-1f8e-4e7e-bf3c-555be83b3c1c
+26,,,,,,,False,False,always-hide,False,False,True,,4d2e83be-5537-45e3-b431-f55ee10d7b39
+27,,,,,,,False,False,always-hide,False,False,False,,4d2e83be-5537-45e3-b431-f55ee10d7b39
+28,,,,,,,False,False,always-hide,False,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+29,/CustomBot/media/logo/aashu.0704@zohomail.in_logo_images.jpeg,,#2EAEE9,Send a Message,,,,False,always-hide,False,,,,39296e2d-2105-40aa-84d4-b8994fd460b8
+30,,,,,,,False,False,always-hide,True,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+31,,,,,,,False,False,always-hide,False,False,False,,1ff3381f-d524-4dac-8506-d72c291af715
+32,,,,,,,False,False,always-hide,False,False,False,,c0340444-821e-486c-bb26-93b0d8c87142
+33,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+34,/CustomBot/media/logo/ankita11habilelabs@gmail.com_logo_MicrosoftTeams-image (1).jpg,/CustomBot/media/logo/ankita11habilelabs@gmail.com_background_img_nike.png,#CC3333,Send a new Message,,,False,False,always-hide,False,True,False,[],8e51e8bf-920b-4525-9668-227527c34808
+35,,,,,,,False,False,always-hide,False,False,False,,8e51e8bf-920b-4525-9668-227527c34808
+36,/CustomBot/media/logo/morwal89@gmail.com_logo_1721309864093.jpeg,/CustomBot/media/logo/morwal89@gmail.com_background_img_1721309864093.jpeg,#3366FF,Send a Message,,,False,False,always-hide,True,False,False,,8e79cb88-1338-4f0a-b41d-2c1d44302706
+37,,,,,,,False,False,always-hide,False,False,False,,8e79cb88-1338-4f0a-b41d-2c1d44302706
+38,,,,,,,False,False,always-hide,False,False,False,[],57f7af2f-bed6-4724-b2ab-a720964a34b2
+39,,,,,,,False,False,always-hide,False,False,False,[],8e51e8bf-920b-4525-9668-227527c34808
+40,,,,,,,False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+41,,,,,,,False,False,always-hide,False,False,False,[],1a30b159-dcc0-4fd5-b699-830b8d741888
+42,,,,,,,False,False,always-hide,False,False,False,[],b02ac376-15a4-4ce1-bd36-a7571e30e19f
+43,,,,,,,False,False,always-hide,False,False,False,[],80861b69-1619-428b-a787-a6538036483a
+44,,,,,,,False,False,always-hide,False,False,False,[],80861b69-1619-428b-a787-a6538036483a
+45,,,,,,,False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+46,,,,,,,False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+47,,/CustomBot/media/logo/morwal89@gmail.comunaric_apps_background_img_image.png,#2EAEE9,Powered by Unaric AI.,,"you are an assistant to salesforce users; you will help them find the best fit app and features available in the given context. Also provide details about how this app can help them and how they can access and install recommended app, not more than 10 words for each app. In context data reference only share website links, no document link should be shared.
+Ensure to stay within the context and do not hallucinate, even if users specifically ask you to do so.",True,False,always-hide,True,True,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+48,,,,,,,False,False,always-hide,False,True,True,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+49,,,,,,,False,False,always-hide,True,True,False,[],8e51e8bf-920b-4525-9668-227527c34808
+50,,,,,,,False,False,always-hide,True,False,False,[],80861b69-1619-428b-a787-a6538036483a
+51,,/CustomBot/media/logo/ankita11habilelabs@gmail.comtest_pro_background_img_502.png,#993300,Send a Message,,,False,False,always-hide,False,False,False,[],8e51e8bf-920b-4525-9668-227527c34808
+52,,/CustomBot/media/logo/ankita11habilelabs@gmail.comlarge_pdfs_background_img_image.png,#2EAEE9,Send a Message,,,False,False,always-hide,False,False,False,[],8e51e8bf-920b-4525-9668-227527c34808
+53,,,,,,,False,False,always-hide,False,False,False,[],68241c11-f16e-4717-b8fa-05ae926ecfd8
+54,,,,,,,False,False,always-hide,False,False,True,[],80861b69-1619-428b-a787-a6538036483a
+55,,,,,,,False,False,always-hide,True,False,False,[],8e51e8bf-920b-4525-9668-227527c34808
+56,,,,,,,False,False,always-hide,False,False,False,[],4d2e83be-5537-45e3-b431-f55ee10d7b39
+57,,,,,,,False,False,always-hide,False,False,False,[],4d2e83be-5537-45e3-b431-f55ee10d7b39
+58,,/CustomBot/media/logo/ankita21habilelabs@gmail.commanglum_hospital_background_img_Screen Shot 2024-08-07 at 6.04.45 PM.png,#2EAEE9,Send a Message,,,False,False,always-hide,True,False,False,[],80861b69-1619-428b-a787-a6538036483a
+59,,,,,,,False,False,always-hide,False,False,False,[],80861b69-1619-428b-a787-a6538036483a
+60,,,,,,,False,False,always-hide,False,False,False,[],34a6b1df-615c-4817-ad7f-5ade0cfded85
+61,,,,,,,False,False,always-hide,False,False,False,[],34a6b1df-615c-4817-ad7f-5ade0cfded85
+62,,,,,,,False,False,always-hide,False,False,False,[],80861b69-1619-428b-a787-a6538036483a
+63,,,#2EAEE9,Send a Message,,,False,False,always-hide,True,False,False,[],80861b69-1619-428b-a787-a6538036483a
+64,,,,,,"Your are acting as a helpful assistant. Your task is to create concise, organized, and informative meeting notes from a provided transcript of a video call.The meeting notes are prepared for a sales person who might want to send them to their management and prospect or client.Your tone is professional and business oriented.",False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
+65,,,,,,,,False,always-hide,False,,,[],fbb0d5c7-eee5-4746-acd4-8f7936684778
+66,,,,,,,False,False,always-hide,False,False,False,[],4d2e83be-5537-45e3-b431-f55ee10d7b39
+67,,,,,,,False,False,always-hide,False,False,False,[],c78886c2-e60a-41c6-b8f4-bc706c677e43
+68,,,,,,,False,False,always-hide,False,False,False,[],8e79cb88-1338-4f0a-b41d-2c1d44302706
