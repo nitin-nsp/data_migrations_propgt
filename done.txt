@@ -31,8 +31,33 @@
     #     # Load
     #     load_data(tar_conn, tar_table, transformed_data)
 
+select * FROM public.langchain_pg_embedding 
+-- where "collection_id"
+-- in ('157dfe71-a8f7-4d02-b63f-5193f7324497' ,
+-- '8209f0d7-5054-48c2-817e-2db33adbe2fe',
+-- '1a045375-f4fc-4431-8d42-3e868412feb5',
+-- '5e13dce3-5fae-4438-acf0-22a9a86d3c1f',
+-- '4fb0f1af-3c1c-4546-a9c3-e0d31d354099',
+-- '8a08a8ee-e266-4293-bbe9-56d84ff0749d',
+-- '51607252-e96e-4edb-8622-c001e7cc8bd0',
+-- '604e8de4-adf9-4bfa-bdfa-9b12d1dfddd9'
+
+-- );
+
+
 
 SELECT column_name, data_type
             FROM information_schema.columns
             WHERE table_name = 'accounts_profile'
             ORDER BY ordinal_position
+            
+
+django_content_type
+auth_permissions
+auth_group_permissions
+
+
+
+
+#pending
+auth_user_user_permissions

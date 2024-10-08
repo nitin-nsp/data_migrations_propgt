@@ -27,24 +27,31 @@ def transform_data():
     try:
         pg_collection = get_table_data("langchain_pg_collection",src_db_name="src_pgvector_db")
         
+        collection_id={}
         res=[]
-        
+        with open("./data/not_uuid_to_project_id.json") as f:
+            project_id_json= json.load(f)
         for row in pg_collection:
             
-            with open("not_uuid_to_project_id.json") as f:
-                project_id_json = json.load(f)
-                # print(chat_conversations_id_map)
-            project_id= project_id_json.get(row["name"], None)
+            project_name=row["name"]
+            if row["name"].startswith("chroma-databases/"):
+                project_name= project_name[len("chroma-databases/"):]
             
-            if not project_id: continue
+            project_id= project_id_json.get(project_name, None)
+            
+            if not project_id:
+                collection_id[row["uuid"]]=row["uuid"]
+                continue
             
             res.append({
-            "name":project_id,
+            "name":str(project_id),
             "cmetadata":row["cmetadata"],
             "uuid":row["uuid"],
             })
             
         
+        with open("./data/collection_id.json","w") as f:
+            json.dump(collection_id,f)
         return res
         
     except Exception as e:
@@ -63,7 +70,7 @@ def run():
 
         # save in db
         with connect_to_db('tar_vector_db') as tar_conn:
-            load_data(tar_conn, table_name="langchain_pg_collection", data=data)
+            load_data_into_table(tar_conn, table_name="langchain_pg_collection", data=data)
 
         print("success ~~~~ !!!!")
     except Exception as e:

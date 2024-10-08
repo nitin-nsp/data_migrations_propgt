@@ -77,6 +77,7 @@ def load_data(tar_conn, table_name, data):
     """Load data into target database."""
     try:
         # tar_conn=connect_to_db("tar_progpt_db")
+        successful_trans,failed_trans=0,0
         columns = list(data[0].keys())
         with tar_conn.cursor() as cur:
             for data_row in data:
@@ -92,7 +93,7 @@ def load_data(tar_conn, table_name, data):
                     # print(data_row)
                     # input("enter the ===> ")
                     tar_conn.commit()
-                    
+                    successful_trans+=1
                 except Exception as e:
                     # print(f"error(load sql): {str(e)} ")
                     import traceback
@@ -102,11 +103,13 @@ def load_data(tar_conn, table_name, data):
                     # Roll back the transaction to avoid d
                     # ata inconsistencies
                     tar_conn.rollback()
+                    failed_trans+=1
                     continue  # Continue with the next row
 
             # Commit the transaction if no exceptions occurred
             tar_conn.commit()
             print(f"Successfully loaded {len(data)} rows into {table_name}")
+            print(f"success: {successful_trans}\nfailed: {failed_trans}")
     except Exception as e:
         import traceback
         print(f"error load: {str(e)}\n{traceback.format_exc()}")
@@ -140,10 +143,12 @@ def load_data_into_table(tar_conn, table_name, data):
                 
             except Exception as e:
                 # Rollback and continue on failure
+                import traceback
+                print(f"error trans: {str(e)}\n{traceback.format_exc()}\n ")
                 tar_conn.rollback()
                 failed_inserts += 1
-                print(f"Error inserting row: {str(e)}")
-                print(f"Failed row: {data_row}")
+                # print(f"Error inserting row: {str(e)}")
+                # print(f"Failed row: ")
                 continue
 
     print(f"Successfully loaded {successful_inserts} rows into {table_name}")

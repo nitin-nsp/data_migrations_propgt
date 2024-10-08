@@ -25,13 +25,14 @@ def transform_data():
     chatconversations table
     """
     try:
+        with open("./data/not_uuid_to_project_id.json") as f:
+            project_id_json = json.load(f)
         chat_unanswered = get_table_data("accounts_unanswered")
         res=[]
         id_cnt=1
         for row in chat_unanswered:
             
-            with open("not_uuid_to_project_id.json") as f:
-                project_id_json = json.load(f)
+            
                 # print(chat_conversations_id_map)
             project_id= project_id_json.get(row["not_uuid"], None)
             
@@ -40,7 +41,7 @@ def transform_data():
             res.append({
             "id": id_cnt,
             "question": row["question"],
-            "project_id": project_id,
+            "project": str(project_id),
             })
             id_cnt+=1
         
@@ -62,7 +63,7 @@ def run():
 
         # save in db
         with connect_to_db('tar_progpt_db') as tar_conn:
-            load_data(tar_conn, table_name="chatbot_chatunanswered", data=data)
+            load_data_into_table(tar_conn, table_name="chatbot_chatunanswered", data=data)
 
         print("success ~~~~ !!!!")
     except Exception as e:

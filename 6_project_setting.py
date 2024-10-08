@@ -32,29 +32,38 @@ def transform_data():
     Profile table
     """
     try:
-        UTC = pytz.utc
+        with open('data/not_uuid_to_project_id.json') as f:
+            not_uuid_to_project_id = json.load(f)
 
         user_exp_data = get_table_data("accounts_userexperience")
         users_data = get_table_data("auth_user", src_db_name=tar_db)
 
-        
+        fail_project_id, fail_project_query,fail_project_name=0,0,0
         res = []
         id_cnt = 1
         for row in user_exp_data:
-            user=''
-            for p_user in users_data:
-                email=p_user["email"]
-                if row["primary_key"].startswith(email):
-                    user=p_user
-                    break
+            # user=''
+            # for p_user in users_data:
+            #     email=p_user["email"]
+            #     if row["primary_key"].startswith(email):
+            #         user=p_user
+            #         break
             
-            if not user:continue
+            # if not user:continue
             # print(row["primary_key"],"=======",user["email"])
+            
+            project_id=not_uuid_to_project_id[row["primary_key"]]
+            if not project_id:
+                fail_project_id+=1
+                continue
+                
             query="""
-            select * from projects_project where user_id=%s
+            select * from projects_project where id=%s
             """
-            project_query=get_query_result(query=query,db_name=tar_db,params=(user["id"],))
-            if not project_query: continue
+            project_query=get_query_result(query=query,db_name=tar_db,params=(project_id,))
+            if not project_query:
+                fail_project_query+=1
+                continue
             
             project_id=project_query[0]["id"]
             query="""
@@ -63,10 +72,11 @@ def transform_data():
             project_name=get_query_result(query=query,db_name=src_db,params=(row["primary_key"],))
             
             if  not project_name:
-                print("::::::::::::::::::::::",row["primary_key"])
-                break
+                fail_project_name+=1
+                # print("::::::::::::::::::::::",row["primary_key"])
+                # break
                 
-            print("::::::::::::::::::::::",project_name[0]["enable_share"])    
+            # print("::::::::::::::::::::::",project_name[0]["enable_share"])    
             res.append({
                 "id": id_cnt,
                 "logo_image_url": row["logo_image"],
@@ -78,9 +88,9 @@ def transform_data():
                 "is_progpt_branding_enabled": row["branding"],
                 "is_citation_show_enabled": row["citation_view"],
                 "citation_view_type": "always-hide",
-                "is_sharing_enabled": project_name[0]["enable_share"],
-                "is_memorization_enabled": row["memorizing"],
-                "is_gpt_response_enabled": row["gpt_response"],
+                "is_sharing_enabled": project_name[0]["enable_share"] if project_name else False,
+                "is_memorization_enabled": row["memorizing"] if row["memorizing"] else False,
+                "is_gpt_response_enabled": row["gpt_response"] if row["gpt_response"] else False,
                 "chatbot_dimension_data": row["embed_data"],
                 "project_id": project_id,
 
@@ -89,7 +99,7 @@ def transform_data():
             id_cnt+=1
                 
                 
-                
+        print(f"fail_project_id: {fail_project_id} \n fail_project_query: {fail_project_query} \n fail_project_name: {fail_project_name}")        
         return res
             
 
@@ -117,7 +127,7 @@ def run():
 
         # save in db
         with connect_to_db('tar_progpt_db') as tar_conn:
-            load_data(tar_conn, table_name="projects_projectsetting", data=data)
+            load_data_into_table(tar_conn, table_name="projects_projectsetting", data=data)
 
         # print("success ~~~~ !!!!")
     except Exception as e:

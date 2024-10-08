@@ -15,7 +15,9 @@ def transform_data():
     Profile table
     """
     try:
-        UTC = pytz.utc
+        
+        with open('data/not_uuid_to_project_id.json') as f:
+            not_uuid_to_project_id = json.load(f)
 
         Events={
             "created":"created",
@@ -28,21 +30,34 @@ def transform_data():
         # project_data= get_table_data("projects_project", src_db_name=tar_db)
         
         media_data= get_table_data("accounts_media")
+        fail_project_id, fail_data_source_id,fail_project_query,fail_data_source_query=0,0,0,0
         id_cnt=1
         res=[]
         for row in media_data:
             # if row["status"]=="created": continue
             # not_uuid =email+project_name
-            email=row["not_uuid"][:len(row["not_uuid"])-len(row["project_name"])]
+            # email=row["not_uuid"][:len(row["not_uuid"])-len(row["project_name"])]
            
-            query="""
-            select * from projects_project where name=%s and user_id in (select id from auth_user where email=%s)
-            """
-            project_query=get_query_result(query=query,db_name=tar_db,params=(row["project_name"],email))
+            # query="""
+            # select * from projects_project where name=%s and user_id in (select id from auth_user where email=%s)
+            # """
+            # project_query=get_query_result(query=query,db_name=tar_db,params=(row["project_name"],email))
             # print(project_query)
-            if not project_query: continue
+            # if not project_query: continue
+            project_id=not_uuid_to_project_id.get(row["not_uuid"], None) 
             
-            project_id=project_query[0]["id"]
+            if not project_id:
+                fail_project_id+=1
+                continue
+            
+            query="""
+            select * from projects_project where id=%s
+            """
+            project_query=get_query_result(query=query,db_name=tar_db,params=(project_id,))
+            if not project_query:
+                fail_project_query+=1 
+                continue
+            
             project_query=project_query[0]
             
             
@@ -56,7 +71,9 @@ def transform_data():
                 """
                 data_source_query=get_query_result(query=query,db_name=tar_db,params=(data_url,space_key,project_id))
 
-                if not data_source_query: continue
+                if not data_source_query:
+                    fail_data_source_id+=1
+                    continue
                 # print(f"confulence: {data_source_id}")
                 
             else:   
@@ -70,7 +87,9 @@ def transform_data():
                 """
                 data_source_query=get_query_result(query=query,db_name=tar_db,params=(media_name,project_id))
                 
-                if not data_source_query: continue
+                if not data_source_query: 
+                    fail_data_source_query+=1
+                    continue
                 # print(f"{project_id} => {data_source_id}")  
                 
             
@@ -121,6 +140,8 @@ def transform_data():
         
         # print(res[0])
         # table(project_data[0])
+        print(f"total_data:{len(media_data)}\n total_res:{len(res)}")
+        print(f"fail_project_id:{fail_project_id}\n fail_project_query:{fail_project_query}\n fail_data_source_id:{fail_data_source_id}\n fail_data_source_query:{fail_data_source_query}")
         return res
 
     except Exception as e:
@@ -140,7 +161,7 @@ def run():
 
         # save in db
         with connect_to_db('tar_progpt_db') as tar_conn:
-            load_data(tar_conn, table_name="projects_eventlog", data=data)
+            load_data_into_table(tar_conn, table_name="projects_eventlog", data=data)
 
         print("success ~~~~ !!!!")
     except Exception as e:

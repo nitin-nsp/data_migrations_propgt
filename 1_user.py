@@ -10,6 +10,8 @@ def transform_data():
     data.sort( key=lambda x:x["id"])
     res=[]
     username_set=set()
+    user_id_to_email = {}
+    email_to_user_id = {}
     for row in data:
          if row["username"] not in username_set:  # Check if the username is already in the set
             username_set.add(row["username"])
@@ -26,10 +28,18 @@ def transform_data():
                 "is_active":row["is_active"],
                 "date_joined":row["date_joined"]
             })
+            user_id_to_email[row["id"]] = row["email"]
+            email_to_user_id[row["email"]] = row["id"]
     
     #remove duplicate username
     # print(res)
-        
+    try:
+        with open('./data/user_id_to_email.json', 'w') as fp:
+            json.dump(user_id_to_email, fp)
+        with open('./data/email_to_user_id.json', 'w') as fp:
+            json.dump(email_to_user_id, fp)
+    except Exception as e:
+        print(f"error: {str(e)}")
     return res
 
 

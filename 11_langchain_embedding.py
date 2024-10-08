@@ -31,16 +31,13 @@ def transform_data():
         
         for row in pg_embedding:
             
-            # with open("not_uuid_to_project_id.json") as f:
-            #     project_id_json = json.load(f)
-            #     # print(chat_conversations_id_map)
-            # project_id= project_id_json.get(row["name"], None)
-            
-            if not project_id: continue
             
             res.append({
-            "name":project_id,
+            "collection_id":row["collection_id"],
+            "embedding":row["embedding"],
+            "document":row["document"],
             "cmetadata":row["cmetadata"],
+            "custom_id":row["custom_id"],
             "uuid":row["uuid"],
             })
             
@@ -63,7 +60,7 @@ def run():
 
         # save in db
         with connect_to_db('tar_vector_db') as tar_conn:
-            load_data(tar_conn, table_name="langchain_pg_collection", data=data)
+            load_data_into_table(tar_conn, table_name="langchain_pg_embedding", data=data)
 
         print("success ~~~~ !!!!")
     except Exception as e:
