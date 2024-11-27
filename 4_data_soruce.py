@@ -3,8 +3,9 @@ import pytz
 from utils import *
 from datetime import datetime, timezone, timedelta
 import uuid
-
-src_db = "src_progpt_db"
+from dotenv import load_dotenv
+load_dotenv()
+src_db = 
 tar_db = "tar_progpt_db"
 
 # data_source = {
@@ -89,9 +90,11 @@ def transform_data():
             
             
             for item in media_dict["pdf_files"]:
+                new_data_url=item["file_path"].split("/")[-1]
+                
                 res.append({
                     "id":id_cnt,
-                    "data_url":item["file_path"],
+                    "data_url":f"{project_id}/{new_data_url}",
                     "name":item["file_path"].split('/')[-1],
                     "is_crawled":True,
                     "type":"uploads",

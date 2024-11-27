@@ -61,6 +61,7 @@ def run():
         
         # transform
         data = transform_data()
+        print(len(data))
         # table(data)
         
         
@@ -69,7 +70,7 @@ def run():
             load_data_into_table(tar_conn, table_name="accounts_profile", data=data)
         
         
-        print("success ~~~~ !!!!")
+        print("Done.... !!!!")
     except Exception as e:
         print(f"error: {str(e)}")
 

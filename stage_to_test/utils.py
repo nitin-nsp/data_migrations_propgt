@@ -10,11 +10,9 @@ from psycopg2.extras import RealDictCursor
 
 from tabulate import tabulate
 
-# load_dotenv()
-# src_db = os.getenv('SRC_DB')
-# tar_db = os.getenv('TAR_DB')
-src_db="stage_progpt_db"
-tar_db="stage_progpt_db"
+load_dotenv()
+src_db = "stage_progpt_db"
+tar_db = "stage_progpt_db"
 DB_PARAMS = {
     'host': 'localhost',
     'port': '5011',
